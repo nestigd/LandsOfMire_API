@@ -1,19 +1,20 @@
-const express = require('express');
+const express = require("express");
+const shopRoutes = require("./routes/shop");
 
 // APP
 const app = express();
 
 // MIDDLEWARE
-app.use((req,res,next) => {
-    console.log(req.path + req.method);
-    next();
-})
+app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log(req.path + req.method);
+  next();
+});
 
-app.get('/', (req, res) => {
-    res.json({mssg : "hello there"})
-})
+//ROUTES
+app.use("/api/shop", shopRoutes);
 
-app.listen(4000, () =>{
-    console.log('listening on port: 4000')
-})
+app.listen(4000, () => {
+  console.log("listening on port: 4000");
+});
