@@ -8,6 +8,7 @@ const shopRoutes = require("./routes/shop");
 const app = express();
 
 // MIDDLEWARE
+//listens for json and attaches json content to the request object
 app.use(express.json());
 
 app.use((req, res, next) => {
