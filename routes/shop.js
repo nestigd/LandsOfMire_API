@@ -8,6 +8,43 @@ router.get("/", (req, res) => {
   res.json({ mssg: "test successful" });
 });
 
+router.get("/items", (req, res) =>{
+  res.json({ 
+    items : [
+      {
+        title: "Iron sword",
+        categories: ["weapon", "melee"],
+        price: 8,
+        rarity: 1,
+      },
+      {
+        title: "Battle axe",
+        categories: ["weapon", "melee"],
+        price: 12,
+        rarity: 2,
+      },
+      {
+        title: "Magic woodstick",
+        categories: ["weapon", "magic"],
+        price: 6,
+        rarity: 1,
+      },
+      {
+        title: "Wyvern cord bow",
+        categories: ["weapon", "ranged"],
+        price: 450,
+        rarity: 10,
+      },
+      {
+        title: "Iron Dagger",
+        categories: ["weapon", "melee", "stealth"],
+        price: 5,
+        rarity: 2,
+      }
+    ]
+  })
+});
+
 router.get("/onsale", (req, res) => {
   // TODO: Items on sale need to be taken from the database
   res.json({
