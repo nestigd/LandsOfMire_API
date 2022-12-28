@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const shopRoutes = require("./routes/shop");
+const userRoutes = require("./routes/user");
+
 
 // APP
 const app = express();
@@ -18,6 +20,8 @@ app.use((req, res, next) => {
 
 //ROUTES
 app.use("/api/shop", shopRoutes);
+app.use("/api/user", userRoutes);
+
 
 // db connection
 mongoose.set("strictQuery", false);

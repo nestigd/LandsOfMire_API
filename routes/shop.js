@@ -5,11 +5,11 @@ const Item = require("../models/itemModel");
 
 // todo: get item catalog
 router.get("/", (req, res) => {
-  res.json({ mssg: "test successful" });
+  res.status(200).json({ mssg: "test successful" });
 });
 
 router.get("/items", (req, res) =>{
-  res.json({ 
+  res.status(200).json({ 
     items : [
       {
         title: "Iron sword",
@@ -47,7 +47,7 @@ router.get("/items", (req, res) =>{
 
 router.get("/onsale", (req, res) => {
   // TODO: Items on sale need to be taken from the database
-  res.json({
+  res.status(200).json({
     item1: {
       title: "Iron sword",
       fullPrice: 12,
