@@ -8,9 +8,9 @@ router.get("/", (req, res) => {
   res.status(200).json({ mssg: "test successful" });
 });
 
-router.get("/items", (req, res) =>{
-  res.status(200).json({ 
-    items : [
+router.get("/items", (req, res) => {
+  res.status(200).json({
+    items: [
       {
         title: "Iron sword",
         categories: ["weapon", "melee"],
@@ -40,32 +40,46 @@ router.get("/items", (req, res) =>{
         categories: ["weapon", "melee", "stealth"],
         price: 5,
         rarity: 2,
-      }
-    ]
-  })
+      },
+    ],
+  });
 });
 
 router.get("/onsale", (req, res) => {
   // TODO: Items on sale need to be taken from the database
   res.status(200).json({
-    item1: {
-      title: "Iron sword",
-      fullPrice: 12,
-      price: 8,
-      toExpiry: 5,
-    },
-    item2: {
-      title: "Black steel hammer",
-      fullPrice: 24,
-      price: 16,
-      toExpiry: 1,
-    },
-    item3: {
-      title: "Black steel hammer",
-      fullPrice: 24,
-      price: 16,
-      toExpiry: 1,
-    },
+    items: [
+      {
+        title: "Iron sword",
+        fullPrice: 12,
+        price: 8,
+        toExpiry: 5,
+      },
+      {
+        title: "Black steel dagger",
+        fullPrice: 26,
+        price: 18,
+        toExpiry: 2,
+      },
+      {
+        title: "Unholy whip",
+        fullPrice: 40,
+        price: 32,
+        toExpiry: 3,
+      },
+      /*{
+        title: "Black steel hammer",
+        fullPrice: 24,
+        price: 16,
+        toExpiry: 6,
+      },*/
+      /*{
+        title: "Broken club",
+        fullPrice: 5,
+        price: 4,
+        toExpiry: 7,
+      },*/
+    ],
   });
 });
 
