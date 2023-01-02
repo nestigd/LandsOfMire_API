@@ -1,14 +1,14 @@
+// imports
+const requireAuth = require("../middleware/requireAuth");
 const express = require("express");
 const router = express.Router();
 
+// models
 const Item = require("../models/itemModel");
 
-// todo: get item catalog
-router.get("/", (req, res) => {
-  res.status(200).json({ mssg: "test successful" });
-});
-
+// this endpoint provides all standard items for sale
 router.get("/items", (req, res) => {
+  // TODO: integration with database
   res.status(200).json({
     items: [
       {
@@ -45,8 +45,9 @@ router.get("/items", (req, res) => {
   });
 });
 
+// this endpoint provides all standard items for sale
 router.get("/onsale", (req, res) => {
-  // TODO: Items on sale need to be taken from the database
+  // TODO: integration with database
   res.status(200).json({
     items: [
       {
@@ -67,28 +68,20 @@ router.get("/onsale", (req, res) => {
         price: 32,
         toExpiry: 3,
       },
-      /*{
-        title: "Black steel hammer",
-        fullPrice: 24,
-        price: 16,
-        toExpiry: 6,
-      },*/
-      /*{
-        title: "Broken club",
-        fullPrice: 5,
-        price: 4,
-        toExpiry: 7,
-      },*/
     ],
   });
 });
 
-// todo: create an item
+router.use(requireAuth);
+// require auth only for the routes below
+
 router.post("/", async (req, res) => {
-  const { title, category, power, limited } = req.body;
+  // TODO: only allow admin level users to create new items
+
+  const { title, category, power, rarity } = req.body;
 
   try {
-    const newItem = await Item.create({ title, category, power, limited });
+    const newItem = await Item.create({ title, category, power, rarity });
     res.status(200).json(newItem);
   } catch (error) {
     res.status(500).json({ error: error.message });
